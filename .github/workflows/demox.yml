@@ -21,5 +21,6 @@ jobs:
       with:
         azcliversion: 2.42.0
         inlineScript: |
+          az config set extension.use_dynamic_install=yes_without_prompt
           az datafactory pipeline create-run --factory-name "ADFGithub00" --name "WaitPipeline" --resource-group "GithubActionsDemo00"
     
