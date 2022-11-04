@@ -21,3 +21,10 @@ jobs:
     - uses: azure/login@v1
       with:
         creds: '{"clientId":"${{ secrets.DS_CLIENT_ID }}","clientSecret":"${{ secrets.DS_CLIENT_SECRET }}","subscriptionId":"${{ secrets.DS_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.DS_TENANT_ID }}"}'
+
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.42.0
+        inlineScript: |
+         az datafactory pipeline create-run --factory-name ADFGithub01 --name WaitPipeline --resource-group GithubActionsDemo00
